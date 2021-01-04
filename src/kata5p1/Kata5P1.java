@@ -24,6 +24,20 @@ public class Kata5P1 {
         // TODO code application logic here
         SelectApp app = new SelectApp();
         app.selectAll();
+       // Cadena de conexión SQLite
+        String url = "jdbc:sqlite:/C:/Users/Yar/Documents/NetBeansProjects/kata5P1/data/KATA5.db";
+        // Instrucción SQL para crear nueva tabla
+        String sql = "CREATE TABLE IF NOT EXISTS direcc_email (\n"
+            + " id integer PRIMARY KEY AUTOINCREMENT,\n"
+            + " Mail text NOT NULL);";
+        try (Connection conn = DriverManager.getConnection(url);
+            Statement stmt = conn.createStatement()) {
+        // Se crea la nueva tabla
+            stmt.execute(sql);
+            System.out.println("Tabla creada");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
 
     }
     
